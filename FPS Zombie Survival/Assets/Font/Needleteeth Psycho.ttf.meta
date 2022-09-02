@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8f1d8b13c22ad9346b4ad769ca13389f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Needleteeth Psycho
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ad7f3a0621fcee641aca8c54ba704105, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
