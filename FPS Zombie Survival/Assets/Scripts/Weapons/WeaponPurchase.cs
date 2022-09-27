@@ -39,7 +39,7 @@ namespace FPS_Zombie.Weapons
         {
             if (!PlayerTouchingShop) return;
 
-            if(Input.GetKeyDown(KeyCode.F))
+            if(PlayerAction.IsInteracting)
             {
                 ShopText.text = "";
                 PurchaseWeapon(PointsRequired);

@@ -41,12 +41,16 @@ namespace FPS_Zombie.Weapons
         {
             GunScript = FindObjectOfType<GunBase>();
 
-            if (GunScript.Firing == false && !GunScript._reloading)
+            bool canShoot = GunScript.Firing == false && !GunScript._reloading;
+
+
+
+
+            if (canShoot)
             {
-                if (Input.GetKeyDown(KeyCode.Alpha1))
+                if (PlayerAction.IsPressingOne)
                 {
                     PlayerWeapon.SlotUsing = 0;
-
 
                     if (PlayerWeapon.WeaponHolding[1] != null)
                     {
@@ -57,7 +61,7 @@ namespace FPS_Zombie.Weapons
 
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.Alpha2))
+                else if (PlayerAction.IsPressingTwo)
                 {
                     PlayerWeapon.SlotUsing = 1;
 

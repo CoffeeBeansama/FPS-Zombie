@@ -48,10 +48,6 @@ namespace FPS_Zombie.Weapons
         public bool Firing = false;
         private GameObject FPS_ControllerCamera ;
 
-        private void Awake()
-        {
-           
-        }
 
         private void Start()
         {
@@ -72,23 +68,27 @@ namespace FPS_Zombie.Weapons
                 StartCoroutine(UpdateAmmoText());
                 if (_reloading) return;
 
-
-                if (HasAmmo())
+                switch (HasAmmo()) 
                 {
-
-                    if (Input.GetMouseButton(0) && !Firing)
-                    {
+                    case true:
                        
-                        StartCoroutine(Shoot());
+                        bool IsPressingFireButton = Input.GetMouseButton(0) && !Firing;
+                        if (IsPressingFireButton)
+                        {
+                            StartCoroutine(Shoot());
+                        }
 
-                    }
+                        break;
 
-                }
-                else
-                {
-                    if (StillHasAmmoHolding())
+                    case false:
 
-                        StartCoroutine("ReloadWeapon");
+                        if (StillHasAmmoHolding())
+                        {
+                            StartCoroutine("ReloadWeapon");
+                        }
+
+                        break;
+                    
                 }
 
             }
@@ -117,7 +117,8 @@ namespace FPS_Zombie.Weapons
             
             RaycastHit Hit;
 
-            if (Physics.Raycast(FPS_ControllerCamera.transform.position,FPS_ControllerCamera.transform.TransformDirection(Vector3.forward), out Hit, Range))
+            bool EnemyShotted = Physics.Raycast(FPS_ControllerCamera.transform.position, FPS_ControllerCamera.transform.TransformDirection(Vector3.forward), out Hit, Range);
+            if (EnemyShotted)
             {
 
                 ZombieHealth ZombieHealth_Script = Hit.transform.GetComponent<ZombieHealth>();

@@ -111,9 +111,10 @@ namespace FPS_Zombie.Enemies
             This_Zombie_Navigation.enabled = false;
             ZombieAnimation.Play(AttackAnimation);
 
-            if(!InAttackRange() && !Attacking)
+            bool PlayerOutOfRange = !InAttackRange() && !Attacking;
+            if (PlayerOutOfRange)
             {
-                 This_Zombie_Navigation.enabled = true;
+                This_Zombie_Navigation.enabled = true;
                 EnemyState = EnemyState.Chase;
             }
 
@@ -150,7 +151,9 @@ namespace FPS_Zombie.Enemies
 
         private void DropItem(float DropChance)
         {
-            if(ItemHolder.SpawnnableObjects.Length > 0 && Random.value < DropChance)
+            bool LuckyItemSpawn = ItemHolder.SpawnnableObjects.Length > 0 && Random.value < DropChance;
+
+            if (LuckyItemSpawn)
             {
                 int RandomItem = Random.Range(0, ItemHolder.SpawnnableObjects.Length);
 
@@ -160,6 +163,7 @@ namespace FPS_Zombie.Enemies
 
         private bool InAttackRange()
         {
+
             if(Vector3.Distance(transform.position,Player.transform.position) <= ReachDistance)
             {
                 return true;

@@ -52,19 +52,15 @@ namespace FPS_Zombie
 
         private void Update()
         {
-           
 
-            if (NumberSpawned == MaxSpawnNumber)
-            {
-                GameState = Game_State.Wait;
-               
-            }
-            else
-            {
-                GameState = Game_State.SpawnZombie;
-            }
 
-           
+            bool AllZombiesSpawned = NumberSpawned == MaxSpawnNumber;
+
+            switch (AllZombiesSpawned) 
+            {
+                case true: GameState = Game_State.Wait; break;
+                case false: GameState = Game_State.SpawnZombie; break;
+            }
 
             switch(GameState)
             {

@@ -140,7 +140,10 @@ namespace FPS_Zombie.Player.Health
 
             if(CanRegenerate)
             {
-                if (RunTimeHealth <= MaximumHealth - 0.1) /// Adding - 0.01 makes sure it doesnt go beyond maximum health;
+
+                bool NotFullHealth = RunTimeHealth <= MaximumHealth - 0.1;
+                
+                if (NotFullHealth) /// Adding - 0.01 makes sure it doesnt go beyond maximum health;
                 {
                     RunTimeHealth += HealthMultiplier * Time.deltaTime;
                 }
