@@ -1,2 +1,2 @@
 # FPS-Zombie
-FPS 
+Playable link https://aigo-sama.itch.io/fps-survival-prototype
